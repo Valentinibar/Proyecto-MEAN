@@ -1,0 +1,36 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">LISTADO DE SITIOS</span>
+                    <button class="btn btn-success float-end" routerLink="/crear-sitio"  >NUEVO</button>
+                   <table *ngIf="listSitios.length > 0" class="table table-striped mt-3">
+                        <thead>
+                          <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Descripcion</th>
+                            <th scope="col">Direccion</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let sitio of listSitios">    
+                            <td>{{sitio._id}}</td>
+                            <td>{{sitio.nombre}}</td>
+                            <td>{{sitio.descripcion}}</td>
+                            <td>{{sitio.direccion}}</td>
+                            <td>    
+                           <i [routerLink]="['/editar-sitio', sitio._id]" class="fas fa-edit text-primary"></i>
+                           <i (click)="eliminarSitio(sitio._id)"   class="fas fa-trash text-danger"></i> 
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <h5   style= "text-align: start; margin-top:10px;"*ngIf="listSitios.length == 0"> No hay sitios para mostrar</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
